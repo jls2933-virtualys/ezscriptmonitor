@@ -46,7 +46,7 @@ class eZContentClassEditDeferredHandler
         $script = eZScheduledScript::create( 'syncobjectattributes.php',
                                              eZINI::instance( 'ezscriptmonitor.ini' )->variable( 'GeneralSettings', 'PhpCliCommand' ) .
                                              ' extension/ezscriptmonitor/bin/' . eZScheduledScript::SCRIPT_NAME_STRING .
-                                             ' -s ' . eZScheduledScript::SITE_ACCESS_STRING . ' --classid=' . $class->attribute( 'id' ) );
+                                             ' --siteaccess=' . eZScheduledScript::SITE_ACCESS_STRING . ' --classid=' . $class->attribute( 'id' ) );
         $script->store();
         $unorderedParameters['ScheduledScriptID'] = $script->attribute( 'id' );
         $class->storeVersioned( $attributes, eZContentClass::VERSION_STATUS_MODIFIED );
